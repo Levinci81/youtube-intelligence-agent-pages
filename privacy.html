@@ -142,19 +142,27 @@
           </thead>
           <tbody>
             <tr><td>Eigener Kanal</td><td>Kanal-ID und Kanalname</td><td>Prüfen, ob die Anmeldung funktioniert</td></tr>
-            <tr><td>Abonnements</td><td>Kanal-ID und Name der abonnierten Kanäle, Anzahl der Abonnements</td><td>Ermitteln, welche Kanäle beobachtet werden</td></tr>
-            <tr><td>Videos abonnierter Kanäle</td><td>Upload-Playlist, Video-ID, Titel, Veröffentlichungszeitpunkt, Kanal, Dauer, Kategorie, Live-Status</td><td>Neue Videos erkennen und für die Analyse auswählen</td></tr>
+            <tr><td>Abonnements</td><td>Kanal-ID und Name der abonnierten Kanäle, Anzahl der Abonnements</td><td>Ermitteln, welche Kanäle beobachtet werden; neue und entfernte Abonnements erkennen</td></tr>
+            <tr><td>Videos abonnierter Kanäle</td><td>Upload-Playlist, Video-ID, Titel, Veröffentlichungszeitpunkt, Kanal, Dauer, Kategorie, Tags, Livestream-Angaben</td><td>Neue Videos erkennen und nach den Regeln in Abschnitt 6 für die Analyse auswählen</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="muted">Weitere Daten des Google- oder YouTube-Kontos, etwa Wiedergabeverlauf, Kommentare, E-Mail-Adresse oder Kontakte, ruft die Anwendung nicht ab.</p>
+      <p class="muted">Die Antworten der API enthalten bei Videos auch Beschreibungstexte; diese werden weder ausgewertet noch gespeichert. Tags werden nur zur Einordnung ausgewertet und nicht gespeichert. Weitere Daten des Google- oder YouTube-Kontos, etwa Wiedergabeverlauf, Kommentare, E-Mail-Adresse oder Kontakte, ruft die Anwendung nicht ab.</p>
     </section>
 
     <section id="speicherung">
       <h2>6. Lokale Speicherung <span class="status ok">umgesetzt</span></h2>
       <ul>
         <li><strong>Anmeldedaten:</strong> Das von Google ausgestellte Zugriffs- und Erneuerungstoken wird als Datei auf dem Rechner des Nutzers im Benutzerordner gespeichert (unter Windows <code>%LOCALAPPDATA%\YIA\secrets</code>), außerhalb des Programmordners. Der Zugriff auf diesen Ordner ist auf das Windows-Benutzerkonto des Nutzers und das System beschränkt.</li>
-        <li><strong>Kanal- und Abodaten:</strong> In der aktuellen Version werden Kanalname und Anzahl der Abonnements nur angezeigt und nicht dauerhaft gespeichert.</li>
+        <li><strong>Merkliste:</strong> Abonnements und neue Videos werden in einer Merkliste im Datenordner der Anwendung auf dem Rechner des Nutzers gespeichert (eine JSON-Datei). Beim ersten Abgleich am 21. Oktober 2026 wurden 235 Abonnements erfasst. Gespeichert werden:
+          <ul>
+            <li>je abonniertem Kanal: Kanal-ID, Kanalname, Zeitpunkt der ersten Erfassung, ID der Upload-Playlist und deren Abrufzeitpunkt;</li>
+            <li>ein Verlauf der Änderungen: Zeitpunkt sowie die IDs neu abonnierter und entfernter Kanäle;</li>
+            <li>je neuem Video: Video-ID, Titel, Kanal, Kanal-ID, Dauer, Kategorie, Veröffentlichungszeitpunkt, Link, Abrufzeitpunkt, Ergebnis der Auswahl (zugelassen, ausgeschlossen oder zu prüfen) mit Begründung und Thema sowie gegebenenfalls der Zeitpunkt der Verarbeitung;</li>
+            <li>der Zeitpunkt des letzten erfolgreichen Zugriffs mit der Google-Berechtigung.</li>
+          </ul>
+        </li>
+        <li><strong>Auswahl der Videos:</strong> Berücksichtigt werden nur Videos der letzten 7 Tage, die noch nicht in der Merkliste stehen. Zugelassen werden Videos mit einer Dauer von 120 bis 7200 Sekunden, die keine laufenden, geplanten oder beendeten Livestreams sind. Anhand von YouTube-Kategorie, Titel und Tags werden Sport, Gaming und Let's Plays, Live-Trading sowie Kundgebungen ausgeschlossen; Trading-Lehrvideos sind erlaubt. Bei widersprüchlichen Hinweisen oder fehlender Dauer bzw. Kategorie wird ein Video nicht zugelassen, sondern zur Prüfung markiert. Die Auswahl erfolgt nach festen Regeln, ohne KI.</li>
         <li><strong>Öffentliche Videodaten:</strong> Metadaten, Untertitel und Analyseergebnisse öffentlicher Videos speichert die Anwendung lokal im Datenordner auf dem Rechner des Nutzers.</li>
       </ul>
       <p>Die Anwendung speichert Informationen nur auf dem Gerät des Nutzers. Sie verwendet keine Cookies und gestattet Dritten nicht, Informationen auf dem Gerät zu speichern oder abzurufen.</p>
@@ -176,7 +184,7 @@
       <h3>Google API Services User Data Policy</h3>
       <p>Die Nutzung und Übermittlung von Informationen, die die Anwendung über Google-APIs erhält, richtet sich nach der <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a> einschließlich der Anforderungen zur eingeschränkten Nutzung („Limited Use“). Für die aktuelle Version bedeutet das:</p>
       <ul>
-        <li>Die Daten werden nur für die Funktionen der Anwendung verwendet, die dem Nutzer angezeigt werden (Anmeldeprüfung, Abonnements, Auswahl neuer Videos).</li>
+        <li>Die Daten werden nur für die Funktionen der Anwendung verwendet, die dem Nutzer angezeigt werden (Anmeldeprüfung, Merkliste der Abonnements, Auswahl neuer Videos).</li>
         <li>Die Daten werden nicht an Dritte übermittelt und nicht verkauft.</li>
         <li>Die Daten werden nicht für Werbung verwendet, auch nicht für personalisierte Werbung oder Retargeting.</li>
         <li>Außer dem Nutzer selbst liest niemand die Daten.</li>
@@ -187,12 +195,18 @@
       <h2>9. Speicherdauer und Löschung</h2>
       <ul>
         <li><strong>Token:</strong> Die Token-Datei bleibt gespeichert, bis der Nutzer sie löscht; eine automatische Löschung gibt es nicht. Nach einem Widerruf (Abschnitt 10) kann sie nicht mehr für Abfragen verwendet werden. <span class="status ok">umgesetzt</span></li>
-        <li><strong>Daten aus der YouTube Data API:</strong> Die aktuelle Version speichert außer dem Token keine Daten aus der YouTube Data API dauerhaft. <span class="status ok">umgesetzt</span></li>
         <li><strong>Öffentliche Videodaten</strong> (Metadaten, Untertitel, Analyseergebnisse): Sie werden in der aktuellen Version nicht automatisch gelöscht und bleiben im lokalen Datenordner, bis der Nutzer sie löscht. <span class="status ok">umgesetzt</span></li>
       </ul>
-      <p>Sobald die Anwendung Daten aus der YouTube Data API speichert (Abschnitt 11), gelten nach den <a href="https://developers.google.com/youtube/terms/developer-policies" rel="noopener">YouTube API Services Developer Policies</a> folgende Fristen:</p>
+      <h3>Merkliste (Daten aus der YouTube Data API)</h3>
+      <p>Für die Merkliste gelten die Fristen der <a href="https://developers.google.com/youtube/terms/developer-policies" rel="noopener">YouTube API Services Developer Policies</a> (höchstens 30 Tage, danach löschen oder aktualisieren). Die Anwendung setzt sie so um: <span class="status ok">umgesetzt</span></p>
       <ul>
-        <li>Gespeicherte Daten werden spätestens nach 30 Tagen gelöscht oder aktualisiert.</li>
+        <li>Die Liste der Abonnements wird bei jedem Lauf neu abgerufen und dabei aktualisiert. Ist sie älter als 29 Tage, wird sie gelöscht.</li>
+        <li>Videoeinträge und Verlaufseinträge werden 29 Tage nach ihrem Abruf gelöscht. Die ID der Upload-Playlist eines Kanals wird nach spätestens 25 Tagen neu abgerufen.</li>
+        <li>Liegt der letzte erfolgreiche Zugriff mit der Google-Berechtigung 29 Tage oder länger zurück, etwa nach einem Widerruf, werden alle Daten der Merkliste gelöscht.</li>
+        <li>Die Anwendung enthält einen Befehl, der die gesamte Merkliste sofort löscht.</li>
+      </ul>
+      <p><strong>Wichtig:</strong> Diese Löschregeln werden bei jedem Lauf der Anwendung angewendet. Eine automatische regelmäßige Ausführung ist noch nicht eingerichtet (Abschnitt 11); derzeit werden Läufe von Hand gestartet. Bis zur Einrichtung der Zeitsteuerung stellt der Verantwortliche die Einhaltung der Fristen sicher, indem er rechtzeitig einen Lauf startet oder die Merkliste löscht.</p>
+      <ul>
         <li>Auf Wunsch werden gespeicherte Daten innerhalb von 7 Tagen gelöscht. Anfragen bitte per E-Mail an die Adresse in Abschnitt 1.</li>
         <li>Nach einem Widerruf über die Sicherheitseinstellungen von Google werden alle zugehörigen Daten innerhalb von 30 Tagen gelöscht.</li>
       </ul>
@@ -213,10 +227,16 @@
       <h2>11. Geplante Funktionen <span class="status plan">geplant</span></h2>
       <p>Die folgenden Funktionen sind geplant und noch nicht umgesetzt. Vor ihrer Inbetriebnahme wird diese Datenschutzerklärung aktualisiert.</p>
       <div class="box plan">
-        <h3>Automatische Beobachtung der Abonnements</h3>
+        <h3>Automatische Ausführung alle sechs Stunden</h3>
         <ul>
-          <li>Die Anwendung soll etwa alle sechs Stunden die Abonnements und neue Videos der abonnierten Kanäle über die YouTube Data API abrufen, mit derselben Berechtigung <code>youtube.readonly</code>.</li>
-          <li>Dafür sollen die Liste der abonnierten Kanäle und die IDs bereits verarbeiteter Videos lokal gespeichert werden. Für diese Daten gelten die Fristen aus Abschnitt 9.</li>
+          <li>Abgleich der Abonnements, Erkennung neuer Videos, Merkliste und Auswahlregeln sind bereits umgesetzt (Abschnitte 5, 6 und 9), werden aber derzeit nur von Hand gestartet.</li>
+          <li>Geplant ist, diese Läufe etwa alle sechs Stunden automatisch auszuführen, mit derselben Berechtigung <code>youtube.readonly</code>. Damit würden auch die Löschregeln aus Abschnitt 9 regelmäßig angewendet.</li>
+        </ul>
+      </div>
+      <div class="box plan">
+        <h3>Automatische Analyse ausgewählter Videos</h3>
+        <ul>
+          <li>Zugelassene Videos aus der Merkliste sollen automatisch an die lokale KI-Analyse (Abschnitt 7) übergeben und danach in der Merkliste als verarbeitet markiert werden. Diese Übergabe ist noch nicht eingerichtet.</li>
         </ul>
       </div>
       <div class="box plan">
