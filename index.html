@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Intelligence Agent</title>
+  <meta name="description" content="Lokal betriebener KI-Agent zur Analyse und Zusammenfassung von YouTube-Inhalten. Private Desktop-Anwendung.">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root {
+      --bg: #0e1116;
+      --surface: #161b22;
+      --surface-2: #1c232d;
+      --border: #2a3340;
+      --text: #e6e9ee;
+      --muted: #9aa5b4;
+      --accent: #5aa9ff;
+      --accent-soft: rgba(90, 169, 255, 0.12);
+      --ok: #4cc38a;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    header { border-bottom: 1px solid var(--border); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+    .brand { font-weight: 650; letter-spacing: 0.2px; color: var(--text); text-decoration: none; }
+    header nav { white-space: nowrap; flex-shrink: 0; }
+    header nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: 15px; }
+    header nav a:hover, header nav a[aria-current="page"] { color: var(--text); }
+    .hero { padding: 64px 0 40px; }
+    .badge {
+      display: inline-block; font-size: 13px; font-weight: 600; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid rgba(90, 169, 255, 0.35);
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.5px; }
+    .lead { font-size: clamp(17px, 2.4vw, 20px); color: var(--muted); margin: 0; max-width: 640px; }
+    section { padding: 24px 0; }
+    h2 { font-size: 20px; margin: 0 0 14px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    .notice {
+      background: var(--surface-2); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+      border-radius: var(--radius); padding: 18px 20px; margin: 8px 0 0;
+    }
+    .notice p { margin: 0; }
+    ul.plain { margin: 0; padding-left: 20px; color: var(--muted); }
+    ul.plain li { margin: 6px 0; }
+    .cta {
+      display: inline-block; margin-top: 8px; padding: 12px 18px; border-radius: 10px;
+      background: var(--accent); color: #0b1220; font-weight: 650; text-decoration: none;
+    }
+    .cta:hover { filter: brightness(1.08); }
+    footer { border-top: 1px solid var(--border); margin-top: 40px; color: var(--muted); font-size: 14px; }
+    footer .wrap { padding-top: 20px; padding-bottom: 28px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    @media (max-width: 520px) {
+      header nav a { margin-left: 12px; }
+      .hero { padding: 40px 0 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="index.html">YouTube Intelligence Agent</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="index.html" aria-current="page">Start</a>
+        <a href="privacy.html">Datenschutz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <span class="badge">Private Desktop-Anwendung</span>
+      <h1>YouTube Intelligence Agent</h1>
+      <p class="lead">Lokal betriebener KI-Agent zur Analyse und Zusammenfassung von YouTube-Inhalten.</p>
+    </div>
+
+    <section aria-labelledby="hinweis">
+      <h2 id="hinweis">Hinweis</h2>
+      <div class="notice">
+        <p>Der YouTube Intelligence Agent ist eine private Desktop-Anwendung. Sie läuft auf dem Rechner ihres Nutzers und wird nicht als öffentlicher Online-Dienst angeboten. Diese Website dient ausschließlich der Beschreibung der Anwendung und ihrer Datenverarbeitung.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="funktionen">
+      <h2 id="funktionen">Was die Anwendung tut</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Google-Anmeldung, nur lesend</h3>
+          <p>Anmeldung über Google OAuth 2.0 mit der einzigen Berechtigung <code>youtube.readonly</code>. Die Anwendung kann nichts in einem YouTube-Konto ändern.</p>
+        </div>
+        <div class="card">
+          <h3>Abonnements und Kanal</h3>
+          <p>Über die YouTube Data API v3 liest sie den eigenen Kanalnamen, die abonnierten Kanäle und öffentliche Angaben zu deren Videos.</p>
+        </div>
+        <div class="card">
+          <h3>Lokale KI-Analyse</h3>
+          <p>Untertitel öffentlicher Videos werden auf dem eigenen Rechner mit einem lokal installierten Sprachmodell (Ollama, gemma3:12b) analysiert.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="nicht">
+      <h2 id="nicht">Was die Anwendung nicht tut</h2>
+      <ul class="plain">
+        <li>Sie veröffentlicht, bearbeitet oder löscht nichts auf YouTube.</li>
+        <li>Sie fordert derzeit keine weiteren Google-Berechtigungen an. Ein Versand der Zusammenfassungen per Gmail ist geplant; er ist in der Datenschutzerklärung beschrieben.</li>
+        <li>Sie nutzt keine Cloud-KI-Dienste für die Analyse.</li>
+        <li>Sie enthält keine Werbung und kein Tracking.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="datenschutz">
+      <h2 id="datenschutz">Datenschutz</h2>
+      <p>Welche Daten die Anwendung verarbeitet, wo sie gespeichert werden und wie der Google-Zugriff widerrufen werden kann, steht in der Datenschutzerklärung.</p>
+      <a class="cta" href="privacy.html">Zur Datenschutzerklärung</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>YouTube Intelligence Agent · Private Desktop-Anwendung · Kontakt: <a href="mailto:levinci81@gmail.com">levinci81@gmail.com</a></span>
+      <span><a href="privacy.html">Datenschutzerklärung</a> · <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube-Nutzungsbedingungen</a></span>
+    </div>
+  </footer>
+</body>
+</html>

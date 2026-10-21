@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datenschutzerklärung – YouTube Intelligence Agent</title>
+  <meta name="description" content="Datenschutzerklärung des YouTube Intelligence Agent: Google OAuth 2.0, YouTube Data API v3, Berechtigung youtube.readonly, lokale Verarbeitung.">
+  <meta name="color-scheme" content="dark">
+  <style>
+    :root {
+      --bg: #0e1116;
+      --surface: #161b22;
+      --surface-2: #1c232d;
+      --border: #2a3340;
+      --text: #e6e9ee;
+      --muted: #9aa5b4;
+      --accent: #5aa9ff;
+      --ok: #4cc38a;
+      --plan: #c79bff;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    code { background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; font-size: 0.92em; overflow-wrap: anywhere; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    header { border-bottom: 1px solid var(--border); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+    .brand { font-weight: 650; color: var(--text); text-decoration: none; }
+    header nav { white-space: nowrap; flex-shrink: 0; }
+    header nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: 15px; }
+    header nav a:hover, header nav a[aria-current="page"] { color: var(--text); }
+    h1 { font-size: clamp(28px, 5.5vw, 38px); line-height: 1.2; margin: 48px 0 8px; letter-spacing: -0.4px; }
+    .meta { color: var(--muted); margin: 0 0 28px; }
+    .toc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; }
+    .toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+    .toc li { margin: 4px 0; break-inside: avoid; }
+    section { padding: 18px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: 0; }
+    h2 { font-size: 20px; margin: 10px 0 10px; scroll-margin-top: 16px; }
+    h3 { font-size: 17px; margin: 18px 0 6px; }
+    .muted { color: var(--muted); }
+    ul, ol { padding-left: 22px; }
+    li { margin: 5px 0; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+    table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15px; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { background: var(--surface-2); font-weight: 600; }
+    tr:last-child td { border-bottom: 0; }
+    .status { display: inline-block; font-size: 12.5px; font-weight: 650; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+    .status.ok { color: var(--ok); border: 1px solid rgba(76, 195, 138, 0.5); background: rgba(76, 195, 138, 0.1); }
+    .status.plan { color: var(--plan); border: 1px solid rgba(199, 155, 255, 0.5); background: rgba(199, 155, 255, 0.1); }
+    .box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin: 10px 0; }
+    .box.plan { border-left: 4px solid var(--plan); }
+    address { font-style: normal; }
+    footer { border-top: 1px solid var(--border); margin-top: 40px; color: var(--muted); font-size: 14px; }
+    footer .wrap { padding-top: 20px; padding-bottom: 28px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    @media (max-width: 600px) {
+      .toc ol { columns: 1; }
+      header nav a { margin-left: 12px; }
+      h1 { margin-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="index.html">YouTube Intelligence Agent</a>
+      <nav aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="privacy.html" aria-current="page">Datenschutz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Datenschutzerklärung</h1>
+    <p class="meta">YouTube Intelligence Agent · Stand: 21. Oktober 2026</p>
+
+    <nav class="toc" aria-label="Inhalt">
+      <ol>
+        <li><a href="#verantwortlich">Verantwortlicher und Kontakt</a></li>
+        <li><a href="#anwendung">Art der Anwendung und Umsetzungsstand</a></li>
+        <li><a href="#youtube-api">Nutzung der YouTube API Services</a></li>
+        <li><a href="#oauth">Google-Anmeldung (OAuth 2.0)</a></li>
+        <li><a href="#daten">Abgerufene Daten</a></li>
+        <li><a href="#speicherung">Lokale Speicherung</a></li>
+        <li><a href="#ki">Lokale KI-Verarbeitung</a></li>
+        <li><a href="#weitergabe">Übermittlung, Weitergabe und Limited Use</a></li>
+        <li><a href="#loeschung">Speicherdauer und Löschung</a></li>
+        <li><a href="#widerruf">Widerruf des Google-Zugriffs</a></li>
+        <li><a href="#geplant">Geplante Funktionen</a></li>
+        <li><a href="#website">Diese Website</a></li>
+        <li><a href="#rechte">Rechtsgrundlage und Ihre Rechte</a></li>
+      </ol>
+    </nav>
+
+    <section id="verantwortlich">
+      <h2>1. Verantwortlicher und Kontakt</h2>
+      <p>Verantwortlich für die Anwendung und diese Website sowie Ansprechpartner für Fragen und Beschwerden:</p>
+      <address class="box">
+        Leonardo Vinci<br>
+        E-Mail: <a href="mailto:levinci81@gmail.com">levinci81@gmail.com</a>
+      </address>
+      <p>Ein Datenschutzbeauftragter ist nicht benannt.</p>
+    </section>
+
+    <section id="anwendung">
+      <h2>2. Art der Anwendung und Umsetzungsstand</h2>
+      <p>Der YouTube Intelligence Agent ist eine private Desktop-Anwendung zur Analyse und Zusammenfassung von YouTube-Inhalten. Sie wird auf dem Rechner ihres Nutzers ausgeführt. Es gibt keinen Server des Betreibers, an den die Anwendung Nutzerdaten sendet, und keine Benutzerkonten beim Betreiber.</p>
+      <p>Diese Erklärung unterscheidet zwischen Funktionen, die bereits umgesetzt sind <span class="status ok">umgesetzt</span>, und Funktionen, die geplant, aber noch nicht in Betrieb sind <span class="status plan">geplant</span>. Die geplanten Funktionen beschreibt Abschnitt 11.</p>
+    </section>
+
+    <section id="youtube-api">
+      <h2>3. Nutzung der YouTube API Services</h2>
+      <p>Die Anwendung verwendet die YouTube API Services (YouTube Data API v3) von Google. Mit der Nutzung der Anwendung gelten die <a href="https://www.youtube.com/t/terms" rel="noopener">Nutzungsbedingungen von YouTube</a>. Für die Datenverarbeitung durch Google gilt die <a href="http://www.google.com/policies/privacy" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+    </section>
+
+    <section id="oauth">
+      <h2>4. Google-Anmeldung (OAuth 2.0) <span class="status ok">umgesetzt</span></h2>
+      <ul>
+        <li>Die Anmeldung erfolgt über Google OAuth 2.0 für Desktop-Anwendungen. Sie öffnet die Anmeldeseite von Google im Browser; das Passwort wird nur bei Google eingegeben und ist für die Anwendung nicht sichtbar.</li>
+        <li>Die Anwendung fordert ausschließlich die Berechtigung <code>https://www.googleapis.com/auth/youtube.readonly</code> an („YouTube-Konto ansehen“). Damit kann sie Daten nur lesen, aber nichts auf YouTube veröffentlichen, ändern oder löschen.</li>
+        <li>Es werden derzeit keine Berechtigungen für andere Google-Dienste angefordert. Ein gespeichertes Token mit anderen oder zusätzlichen Berechtigungen weist die Anwendung zurück.</li>
+      </ul>
+    </section>
+
+    <section id="daten">
+      <h2>5. Abgerufene Daten <span class="status ok">umgesetzt</span></h2>
+      <p>Über die YouTube Data API v3 kann die Anwendung folgende Daten abrufen:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Bereich</th><th scope="col">Daten</th><th scope="col">Zweck</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Eigener Kanal</td><td>Kanal-ID und Kanalname</td><td>Prüfen, ob die Anmeldung funktioniert</td></tr>
+            <tr><td>Abonnements</td><td>Kanal-ID und Name der abonnierten Kanäle, Anzahl der Abonnements</td><td>Ermitteln, welche Kanäle beobachtet werden</td></tr>
+            <tr><td>Videos abonnierter Kanäle</td><td>Upload-Playlist, Video-ID, Titel, Veröffentlichungszeitpunkt, Kanal, Dauer, Kategorie, Live-Status</td><td>Neue Videos erkennen und für die Analyse auswählen</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Weitere Daten des Google- oder YouTube-Kontos, etwa Wiedergabeverlauf, Kommentare, E-Mail-Adresse oder Kontakte, ruft die Anwendung nicht ab.</p>
+    </section>
+
+    <section id="speicherung">
+      <h2>6. Lokale Speicherung <span class="status ok">umgesetzt</span></h2>
+      <ul>
+        <li><strong>Anmeldedaten:</strong> Das von Google ausgestellte Zugriffs- und Erneuerungstoken wird als Datei auf dem Rechner des Nutzers im Benutzerordner gespeichert (unter Windows <code>%LOCALAPPDATA%\YIA\secrets</code>), außerhalb des Programmordners. Der Zugriff auf diesen Ordner ist auf das Windows-Benutzerkonto des Nutzers und das System beschränkt.</li>
+        <li><strong>Kanal- und Abodaten:</strong> In der aktuellen Version werden Kanalname und Anzahl der Abonnements nur angezeigt und nicht dauerhaft gespeichert.</li>
+        <li><strong>Öffentliche Videodaten:</strong> Metadaten, Untertitel und Analyseergebnisse öffentlicher Videos speichert die Anwendung lokal im Datenordner auf dem Rechner des Nutzers.</li>
+      </ul>
+      <p>Die Anwendung speichert Informationen nur auf dem Gerät des Nutzers. Sie verwendet keine Cookies und gestattet Dritten nicht, Informationen auf dem Gerät zu speichern oder abzurufen.</p>
+    </section>
+
+    <section id="ki">
+      <h2>7. Lokale KI-Verarbeitung <span class="status ok">umgesetzt</span></h2>
+      <p>Die Analyse und Zusammenfassung von Videoinhalten erfolgt mit einem lokal installierten Sprachmodell (Ollama mit dem Modell gemma3:12b). Die Anwendung akzeptiert für das Sprachmodell nur eine Adresse auf dem eigenen Rechner (<code>127.0.0.1</code> bzw. <code>localhost</code>). Inhalte werden nicht an Cloud-KI-Dienste gesendet.</p>
+      <p>Grundlage der Analyse sind öffentlich verfügbare Metadaten und Untertitel einzelner YouTube-Videos. Dafür verwendet die Anwendung das Werkzeug yt-dlp; der Programmcode übergibt dabei weder Anmeldedaten noch Browser-Cookies.</p>
+    </section>
+
+    <section id="weitergabe">
+      <h2>8. Übermittlung, Weitergabe und Limited Use</h2>
+      <ul>
+        <li>Für Anmeldung und API-Abfragen kommuniziert die Anwendung verschlüsselt mit Google (<code>accounts.google.com</code>, <code>oauth2.googleapis.com</code>, <code>youtube.googleapis.com</code>).</li>
+        <li>Öffentliche Videodaten werden von YouTube abgerufen.</li>
+        <li>Die Anwendung übermittelt keine Daten an den Betreiber oder an andere Dritte. Sie zeigt keine Werbung an und erlaubt Dritten nicht, Inhalte oder Werbung einzublenden.</li>
+      </ul>
+      <h3>Google API Services User Data Policy</h3>
+      <p>Die Nutzung und Übermittlung von Informationen, die die Anwendung über Google-APIs erhält, richtet sich nach der <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a> einschließlich der Anforderungen zur eingeschränkten Nutzung („Limited Use“). Für die aktuelle Version bedeutet das:</p>
+      <ul>
+        <li>Die Daten werden nur für die Funktionen der Anwendung verwendet, die dem Nutzer angezeigt werden (Anmeldeprüfung, Abonnements, Auswahl neuer Videos).</li>
+        <li>Die Daten werden nicht an Dritte übermittelt und nicht verkauft.</li>
+        <li>Die Daten werden nicht für Werbung verwendet, auch nicht für personalisierte Werbung oder Retargeting.</li>
+        <li>Außer dem Nutzer selbst liest niemand die Daten.</li>
+      </ul>
+    </section>
+
+    <section id="loeschung">
+      <h2>9. Speicherdauer und Löschung</h2>
+      <ul>
+        <li><strong>Token:</strong> Die Token-Datei bleibt gespeichert, bis der Nutzer sie löscht; eine automatische Löschung gibt es nicht. Nach einem Widerruf (Abschnitt 10) kann sie nicht mehr für Abfragen verwendet werden. <span class="status ok">umgesetzt</span></li>
+        <li><strong>Daten aus der YouTube Data API:</strong> Die aktuelle Version speichert außer dem Token keine Daten aus der YouTube Data API dauerhaft. <span class="status ok">umgesetzt</span></li>
+        <li><strong>Öffentliche Videodaten</strong> (Metadaten, Untertitel, Analyseergebnisse): Sie werden in der aktuellen Version nicht automatisch gelöscht und bleiben im lokalen Datenordner, bis der Nutzer sie löscht. <span class="status ok">umgesetzt</span></li>
+      </ul>
+      <p>Sobald die Anwendung Daten aus der YouTube Data API speichert (Abschnitt 11), gelten nach den <a href="https://developers.google.com/youtube/terms/developer-policies" rel="noopener">YouTube API Services Developer Policies</a> folgende Fristen:</p>
+      <ul>
+        <li>Gespeicherte Daten werden spätestens nach 30 Tagen gelöscht oder aktualisiert.</li>
+        <li>Auf Wunsch werden gespeicherte Daten innerhalb von 7 Tagen gelöscht. Anfragen bitte per E-Mail an die Adresse in Abschnitt 1.</li>
+        <li>Nach einem Widerruf über die Sicherheitseinstellungen von Google werden alle zugehörigen Daten innerhalb von 30 Tagen gelöscht.</li>
+      </ul>
+    </section>
+
+    <section id="widerruf">
+      <h2>10. Widerruf des Google-Zugriffs</h2>
+      <p>Der Zugriff der Anwendung auf das Google-Konto kann jederzeit über die Sicherheitseinstellungen von Google widerrufen werden:</p>
+      <ol>
+        <li><a href="https://security.google.com/settings/security/permissions" rel="noopener">Google-Sicherheitseinstellungen: Drittanbieter-Zugriff</a> öffnen (alternativ <a href="https://myaccount.google.com/linkedapps" rel="noopener">myaccount.google.com/linkedapps</a>).</li>
+        <li>Die Anwendung „YouTube Intelligence Agent“ auswählen.</li>
+        <li>„Details ansehen“ und anschließend „Zugriff entfernen“ wählen und bestätigen.</li>
+      </ol>
+      <p>Zusätzlich kann die lokal gespeicherte Token-Datei im Ordner <code>%LOCALAPPDATA%\YIA\secrets</code> gelöscht werden.</p>
+    </section>
+
+    <section id="geplant">
+      <h2>11. Geplante Funktionen <span class="status plan">geplant</span></h2>
+      <p>Die folgenden Funktionen sind geplant und noch nicht umgesetzt. Vor ihrer Inbetriebnahme wird diese Datenschutzerklärung aktualisiert.</p>
+      <div class="box plan">
+        <h3>Automatische Beobachtung der Abonnements</h3>
+        <ul>
+          <li>Die Anwendung soll etwa alle sechs Stunden die Abonnements und neue Videos der abonnierten Kanäle über die YouTube Data API abrufen, mit derselben Berechtigung <code>youtube.readonly</code>.</li>
+          <li>Dafür sollen die Liste der abonnierten Kanäle und die IDs bereits verarbeiteter Videos lokal gespeichert werden. Für diese Daten gelten die Fristen aus Abschnitt 9.</li>
+        </ul>
+      </div>
+      <div class="box plan">
+        <h3>Versand der Zusammenfassungen per Gmail</h3>
+        <ul>
+          <li>Die Anwendung soll Zusammenfassungen (mit Videotitel, Kanal, Dauer und Link) per E-Mail an das eigene Gmail-Konto des Nutzers senden.</li>
+          <li>Dafür ist die zusätzliche Berechtigung <code>https://www.googleapis.com/auth/gmail.send</code> vorgesehen. Sie erlaubt nur das Senden von E-Mails, nicht das Lesen des Postfachs. Google fragt die Zustimmung dazu gesondert im Anmeldedialog ab.</li>
+          <li>Versendete E-Mails werden im Gmail-Konto des Nutzers bei Google gespeichert; dafür gilt die Datenschutzerklärung von Google.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="website">
+      <h2>12. Diese Website</h2>
+      <p>Diese Website wird über GitHub Pages bereitgestellt. Nach Angaben von GitHub wird beim Aufruf einer GitHub-Pages-Website die IP-Adresse des Besuchers aus Sicherheitsgründen protokolliert und gespeichert. Einzelheiten enthält die <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+      <p>Die Website selbst setzt keine Cookies, verwendet keine Analyse- oder Tracking-Werkzeuge und lädt keine Inhalte von Drittanbietern, etwa Schriftarten oder Skripte.</p>
+    </section>
+
+    <section id="rechte">
+      <h2>13. Rechtsgrundlage und Ihre Rechte</h2>
+      <h3>Rechtsgrundlage</h3>
+      <p>Die Anwendung greift erst auf Daten des YouTube-Kontos zu, nachdem der Nutzer im Anmeldedialog von Google der Berechtigung zugestimmt hat. Rechtsgrundlage ist diese Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden (Art. 7 Abs. 3 DSGVO), etwa wie in Abschnitt 10 beschrieben; die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt.</p>
+      <p>Die Bereitstellung der Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Ohne die Zustimmung kann die Anwendung nicht auf Kanalinformationen und Abonnements zugreifen.</p>
+      <h3>Ihre Rechte</h3>
+      <p>Nach der Datenschutz-Grundverordnung haben Sie insbesondere folgende Rechte:</p>
+      <ul>
+        <li>Auskunft über die gespeicherten Daten (Art. 15 DSGVO)</li>
+        <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+        <li>Löschung (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+      </ul>
+      <p>Zur Ausübung genügt eine E-Mail an die Adresse in Abschnitt 1.</p>
+      <h3>Beschwerderecht</h3>
+      <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO), insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für den Verantwortlichen zuständig ist:</p>
+      <address class="box">
+        Garante per la protezione dei dati personali<br>
+        Piazza Venezia 11, 00187 Roma, Italien<br>
+        <a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a> · E-Mail: <a href="mailto:protocollo@gpdp.it">protocollo@gpdp.it</a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>YouTube Intelligence Agent · Private Desktop-Anwendung · Kontakt: <a href="mailto:levinci81@gmail.com">levinci81@gmail.com</a></span>
+      <span><a href="index.html">Startseite</a> · <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube-Nutzungsbedingungen</a></span>
+    </div>
+  </footer>
+</body>
+</html>
